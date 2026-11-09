@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio: about me, what I study, my work, resume, homework repositories and commits.">
+  <meta name="theme-color" content="#120d24">
+  <script>document.documentElement.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background decoration layers (all purely visual) -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <!-- Floating star dock -->
+  <nav class="dock" aria-label="Sections">
+    <a href="#top" data-spy="top" class="on">Home</a>
+    <a href="#about" data-spy="about">About</a>
+    <a href="#studying" data-spy="studying">Studying</a>
+    <a href="#work" data-spy="work">Work</a>
+    <a href="#resume" data-spy="resume">Resume</a>
+    <a href="#homework" data-spy="homework">Homework</a>
+    <a href="#contact" data-spy="contact">Contact</a>
+    <button id="theme" class="theme" type="button" aria-pressed="false" aria-label="Switch between night and daybreak theme">☾</button>
+  </nav>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <header id="top" class="hero wrap">
+      <div class="hero-text">
+        <p class="log"><span class="pr">&gt;</span> <span id="log"></span><b class="caret" aria-hidden="true"></b></p>
+        <h1 id="name" class="name">Your Name</h1>
+        <p class="role">I'm a <span id="role"></span><b class="caret" aria-hidden="true"></b></p>
+        <p id="tagline" class="lead"></p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See my work</a>
+          <a class="btn" href="#homework">Homework &amp; commits</a>
+          <a class="btn" id="dl-resume" href="resume.pdf" download>Download resume</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="false">
+        <div class="orbit o1" style="--s:440px;--d:0s"><span class="chip">HTML</span></div>
+        <div class="orbit o2" style="--s:540px;--d:-12s"><span class="chip">CSS</span></div>
+        <div class="orbit o3" style="--s:640px;--d:-22s"><span class="chip">JavaScript</span></div>
+        <div class="orbit o4" style="--s:490px;--d:-30s"><span class="chip">Git</span></div>
+        <div class="arch"><img id="photo" src="photo.jpg" alt="Portrait of me" width="280" height="380"></div>
+        <span class="sticker s1" id="stk1">Open to learn</span>
+        <span class="sticker s2" id="stk2">Est. 2026</span>
+      </div>
+
+      <ul class="stats" id="stats"></ul>
+    </header>
+
+    <div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section sec-about">
+      <div class="wrap">
+        <div class="plate rv"><span class="num">01</span><span class="lbl">About · Origin story</span></div>
+        <h2 class="h2 rv" id="about-title">Engineer in the making</h2>
+        <div class="two">
+          <div class="rv" id="about-text"></div>
+          <div class="console card rv" data-tilt>
+            <div class="bar"><i></i><i></i><i></i><span id="console-title">me@portfolio ~</span></div>
+            <div class="screen" id="console-out" aria-live="polite"></div>
+            <div class="cmds"><span class="mini">Run a command:</span><span id="console-cmds"></span></div>
+          </div>
+        </div>
+        <h3 class="h3 rv">My journey</h3>
+        <ol class="tl" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- ============ STUDYING ============ -->
+    <section id="studying" class="section sec-study">
+      <div class="wrap">
+        <div class="plate rv"><span class="num">02</span><span class="lbl">Classes · Skills</span></div>
+        <h2 class="h2 rv">What I'm studying</h2>
+        <p class="sub rv" id="study-sub"></p>
+        <div class="grid classes" id="classes"></div>
+
+        <h3 class="h3 rv">Star map: pick a skill, see where I used it</h3>
+        <p class="sub rv">Every skill below is backed by something I built. Click one to see the proof.</p>
+        <div class="pills rv" id="skill-filters" role="group" aria-label="Skill categories"></div>
+        <div class="skills-wrap">
+          <div class="chips rv" id="skill-chips"></div>
+          <aside class="card detail rv" id="skill-detail" aria-live="polite"></aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work" class="section sec-work">
+      <div class="wrap">
+        <div class="plate rv"><span class="num">03</span><span class="lbl">Constellations · Projects</span></div>
+        <h2 class="h2 rv">Things I've built</h2>
+        <div class="grid projects" id="projects"></div>
+      </div>
+    </section>
+
+    <!-- ============ RESUME ============ -->
+    <section id="resume" class="section sec-resume">
+      <div class="wrap">
+        <div class="plate rv"><span class="num">04</span><span class="lbl">Resume · One page</span></div>
+        <h2 class="h2 rv">Resume</h2>
+        <div class="paper rv" id="paper"></div>
+        <div class="cta rv">
+          <a class="btn primary" id="dl-resume2" href="resume.pdf" download>Download PDF</a>
+          <button class="btn" type="button" id="print">Print this page</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOMEWORK ============ -->
+    <section id="homework" class="section sec-hw">
+      <div class="wrap">
+        <div class="plate rv"><span class="num">05</span><span class="lbl">Homework · Repositories · Commits</span></div>
+        <h2 class="h2 rv">Homework</h2>
+        <p class="sub rv">Each card has the live site, the repository and the real commit history, loaded from GitHub.</p>
+        <div class="hw-list" id="hw-list"></div>
+
+        <h3 class="h3 rv">Latest commits</h3>
+        <div class="card feed rv" id="feed"><p class="mini">Loading commits…</p></div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section sec-contact">
+      <div class="wrap">
+        <div class="plate rv"><span class="num">06</span><span class="lbl">Contact · Send a signal</span></div>
+        <h2 class="h2 rv">Send a signal</h2>
+        <div class="two">
+          <form class="card form rv" id="form" novalidate>
+            <label>Your name<input name="name" required autocomplete="name"></label>
+            <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+            <label>Message<textarea name="message" rows="5" required></textarea></label>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn primary" type="submit">Launch message ✦</button>
+            <p class="mini" id="form-msg" role="status"></p>
+          </form>
+          <div class="links rv" id="links"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <span id="foot-text"></span>
+    <a href="#top" class="btn small">Back to top ↑</a>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
