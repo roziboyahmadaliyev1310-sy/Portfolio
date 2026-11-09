@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio</title>
-  <meta name="description" content="Personal portfolio: about me, what I study, my work, resume, homework repositories and commits.">
+  <meta name="description" content="Personal portfolio: about me, what I study, my work, and my resume.">
   <meta name="theme-color" content="#120d24">
   <script>document.documentElement.classList.add('js');
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -29,7 +29,6 @@
     <a href="#studying" data-spy="studying">Studying</a>
     <a href="#work" data-spy="work">Work</a>
     <a href="#resume" data-spy="resume">Resume</a>
-    <a href="#homework" data-spy="homework">Homework</a>
     <a href="#contact" data-spy="contact">Contact</a>
     <button id="theme" class="theme" type="button" aria-pressed="false" aria-label="Switch between night and daybreak theme">☾</button>
   </nav>
@@ -44,7 +43,6 @@
         <p id="tagline" class="lead"></p>
         <div class="cta">
           <a class="btn primary" href="#work">See my work</a>
-          <a class="btn" href="#homework">Homework &amp; commits</a>
           <a class="btn" id="dl-resume" href="resume.pdf" download>Download resume</a>
         </div>
       </div>
@@ -122,23 +120,10 @@
       </div>
     </section>
 
-    <!-- ============ HOMEWORK ============ -->
-    <section id="homework" class="section sec-hw">
-      <div class="wrap">
-        <div class="plate rv"><span class="num">05</span><span class="lbl">Homework · Repositories · Commits</span></div>
-        <h2 class="h2 rv">Homework</h2>
-        <p class="sub rv">Each card has the live site, the repository and the real commit history, loaded from GitHub.</p>
-        <div class="hw-list" id="hw-list"></div>
-
-        <h3 class="h3 rv">Latest commits</h3>
-        <div class="card feed rv" id="feed"><p class="mini">Loading commits…</p></div>
-      </div>
-    </section>
-
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="section sec-contact">
       <div class="wrap">
-        <div class="plate rv"><span class="num">06</span><span class="lbl">Contact · Send a signal</span></div>
+        <div class="plate rv"><span class="num">05</span><span class="lbl">Contact · Send a signal</span></div>
         <h2 class="h2 rv">Send a signal</h2>
         <div class="two">
           <form class="card form rv" id="form" novalidate>
@@ -160,6 +145,7 @@
     <a href="#top" class="btn small">Back to top ↑</a>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="data.js"></script>
   <script src="script.js"></script>
 </body>

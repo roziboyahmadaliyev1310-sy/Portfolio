@@ -152,7 +152,6 @@
   /* stats (repo count comes from the GitHub API) */
   const statDefs = [
     { id: 'classes', n: CLASSES.list.length, l: 'classes this term' },
-    { id: 'hw', n: HOMEWORK.length, l: 'homework repositories' },
     { id: 'proj', n: PROJECTS.length, l: 'projects built' },
     { id: 'repos', n: null, l: 'public GitHub repos' }
   ];
@@ -250,65 +249,33 @@
   paintSkills();
 
   /* ---------- resume ---------- */
-  const R = RESUME;
-  const items = (a) => a.map((x) => `<div class="item"><b>${esc(x.what)}</b><span>${esc(x.when)}</span>${x.more ? `<p>${esc(x.more)}</p>` : ''}</div>`).join('');
-  $('#paper').innerHTML = `
-    <h3>${esc(PROFILE.name)}</h3>
-    <div class="head">${esc(R.headline)} · ${esc(PROFILE.email)} · ${esc(PROFILE.location)} · github.com/${esc(U)}</div>
-    <p>${esc(R.summary)}</p>
-    <h4>Education</h4>${items(R.education)}
-    <h4>Experience &amp; projects</h4>${items(R.experience)}
-    <h4>Skills</h4><div class="skl">${SKILLS.map((s) => `<span>${esc(s.name)}</span>`).join('')}</div>
-    ${R.certs.length ? `<h4>Certifications</h4>${R.certs.map((c) => `<div class="item"><b>${esc(c.title)} · ${esc(c.issuer)}</b><span>${esc(c.when)}</span></div>`).join('')}` : ''}`;
-  $('#print').addEventListener('click', () => print());
+  const resumeCanvas = document.createElement('canvas');
+  const resumeWrap = document.createElement('div');
+  resumeWrap.className = 'resume-render';
+  resumeWrap.appendChild(resumeCanvas);
+  $('#paper').innerHTML = '';
+  $('#paper').appendChild(resumeWrap);
 
-  /* ---------- homework + GitHub data ---------- */
-  $('#hw-list').innerHTML = HOMEWORK.map((h) => `
-    <article class="hw rv" data-repo="${esc(h.repo)}">
-      <h4>${esc(h.title)}</h4><p>${h.desc}</p>
-      <div class="row">
-        <a class="b" href="${liveUrl(h.repo)}" target="_blank" rel="noopener">Live site</a>
-        <a class="b" href="${repoUrl(h.repo)}" target="_blank" rel="noopener">Repository</a>
-        <a class="b" data-commits href="${repoUrl(h.repo)}/commits" target="_blank" rel="noopener">Commits</a>
-      </div>
-      <div class="latest" data-latest></div>
-    </article>`).join('');
-
-  async function gh(url) {
-    const key = 'gh:' + url;
-    try { const c = sessionStorage.getItem(key); if (c) return JSON.parse(c); } catch (e) {}
-    const r = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } });
-    if (!r.ok) throw new Error(r.status);
-    const out = { data: await r.json(), link: r.headers.get('link') || '' };
-    try { sessionStorage.setItem(key, JSON.stringify(out)); } catch (e) {}
-    return out;
+  function renderResumeFallback() {
+    $('#paper').innerHTML = `<iframe src="${PROFILE.resume}" title="Resume PDF" loading="lazy"></iframe>`;
   }
-  const ago = (d) => {
-    const s = (Date.now() - new Date(d)) / 1000;
-    if (s < 3600) return Math.max(1, Math.round(s / 60)) + ' min ago';
-    if (s < 86400) return Math.round(s / 3600) + ' h ago';
-    return Math.round(s / 86400) + ' d ago';
-  };
-  if (U && U !== 'YOUR-GITHUB-USERNAME') {
-    gh(`https://api.github.com/users/${U}`).then(({ data }) => setStat('repos', data.public_repos)).catch(() => {});
-    HOMEWORK.forEach(async (h) => {
-      const card = $(`.hw[data-repo="${CSS.escape(h.repo)}"]`);
-      try {
-        const { data, link } = await gh(`https://api.github.com/repos/${U}/${h.repo}/commits?per_page=1`);
-        const m = link.match(/[?&]page=(\d+)>;\s*rel="last"/);
-        const n = m ? +m[1] : data.length;
-        $('[data-commits]', card).textContent = `${n} commit${n === 1 ? '' : 's'}`;
-        if (data[0]) $('[data-latest]', card).textContent = `latest: “${data[0].commit.message.split('\n')[0]}” · ${ago(data[0].commit.author.date)}`;
-      } catch (e) { /* keep plain "Commits" label */ }
-    });
-    gh(`https://api.github.com/repos/${U}/${PROFILE.mainRepo}/commits?per_page=8`).then(({ data }) => {
-      $('#feed').innerHTML = `<ul>${data.map((c) => `
-        <li><a href="${esc(c.html_url)}" target="_blank" rel="noopener">${esc(c.sha.slice(0, 7))}</a>
-        <span class="msg">${esc(c.commit.message.split('\n')[0])}</span><time datetime="${esc(c.commit.author.date)}">${ago(c.commit.author.date)}</time></li>`).join('')}</ul>`;
-    }).catch(() => { $('#feed').innerHTML = `<p class="mini">Couldn't load commits right now. <a href="${repoUrl(PROFILE.mainRepo)}/commits" target="_blank" rel="noopener">Open them on GitHub →</a></p>`; });
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    pdfjsLib.getDocument({ url: PROFILE.resume }).promise.then((pdf) => pdf.getPage(1)).then((page) => {
+      const viewport = page.getViewport({ scale: 1.2 });
+      const context = resumeCanvas.getContext('2d');
+      resumeCanvas.width = viewport.width;
+      resumeCanvas.height = viewport.height;
+      resumeCanvas.style.width = '100%';
+      resumeCanvas.style.height = 'auto';
+      resumeCanvas.style.background = '#fff';
+      return page.render({ canvasContext: context, viewport }).promise;
+    }).catch(() => renderResumeFallback());
   } else {
-    $('#feed').innerHTML = '<p class="mini">Set GITHUB_USER in data.js to show live commit counts and the latest commits here.</p>';
+    renderResumeFallback();
   }
+  $('#print').addEventListener('click', () => print());
 
   /* ---------- contact ---------- */
   const links = [

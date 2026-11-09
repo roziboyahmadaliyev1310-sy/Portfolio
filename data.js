@@ -3,100 +3,95 @@
    Search for "EDIT" to find the things you must change.
    ========================================================= */
 
-// EDIT: your GitHub username (used for live site / repo / commits links and the GitHub API).
 const GITHUB_USER = "roziboyahmadaliyev1310-sy";
 
 const PROFILE = {
-  name: "Ruziboy Akhmadaliev",                         // EDIT: taken from your LinkedIn URL, fix the spelling if needed
-  log: "observing: a new portfolio online",            // typed line at the top of the hero
-  roles: ["web developer in training", "curious builder", "fast learner"],  // EDIT
-  tagline: "I build small, practical web projects and I'm learning how to make them better with every commit.", // EDIT
-  photo: "photo.jpg",                                  // put your picture next to index.html with this name
-  resume: "resume.pdf",                                // put your resume PDF next to index.html
-  email: "you@example.com",                            // EDIT
-  linkedin: "https://www.linkedin.com/in/ruziboy-akhmadaliev-3b481b3a1",
-  location: "Your city, Country",                      // EDIT
-  mainRepo: "portfolio",                               // EDIT: the name of THIS portfolio repository
-  formEndpoint: "",                                    // optional: a Formspree URL. Empty = opens your email app
-  stickers: ["Open to learn", "Est. 2026"],
-  footer: "Built by hand with HTML, CSS and JavaScript."
+  name: "Roziboy Ahmadaliyev",
+  log: "cybersecurity student · portfolio online",
+  roles: ["Cybersecurity learner", "Web developer", "Problem solver", "Team player"],
+  tagline: "Cybersecurity is my future path, and I’m building strong technical foundations in coding, design, and problem solving while growing as a student and developer.",
+  photo: "photo.jpg",
+  resume: "resume.pdf",
+  email: "roziboyahmadaliyev1310@gmail.com",
+  linkedin: "",
+  location: "South Korea, Songnam",
+  mainRepo: "portfolio",
+  formEndpoint: "",
+  stickers: ["Cyber ready", "Est. 2026"],
+  footer: "Built with passion, code, and constant learning."
 };
 
 const ABOUT = {
-  title: "Engineer in the making",
-  // Each string is one paragraph. EDIT all of them.
+  title: "Computer engineering student with a cyber future",
   paragraphs: [
-    "I'm a student with a strong interest in building things for the web. I enjoy solving problems and turning ideas into practical solutions.",
-    "It started small: simple pages, then JavaScript, then real apps that talk to APIs. Each homework taught me how to break a problem into parts and finish it.",
-    "Right now I'm learning Git and GitHub Pages, so that everything I build is public, versioned and easy to review."
+    "My name is Roziboy Ahmadaliyev, and I am a computer engineering student with a strong interest in cybersecurity, coding, and practical problem solving.",
+    "I am currently in my second year of study, and I have completed about 70% of the program. I am doing well and continuing to improve every day through projects, homework, and hands-on learning.",
+    "I enjoy learning languages and technologies such as Python, HTML, CSS, JavaScript, Java, PHP, and other coding tools. My long-term goal is to build a career in cybersecurity, while also strengthening my web development skills and communication abilities."
   ]
 };
 
-// The fake terminal on the About section. Add or change commands freely.
 const CONSOLE = {
-  whoami:    ["Ruziboy Akhmadaliev, student and web developer in training.", "HTML · CSS · JavaScript · Git."],
-  education: ["Your University, Your Country.", "Major: Your Major.", "Year: 1."],            // EDIT
-  languages: ["English (fluent)", "Add your languages here."],                                // EDIT
-  interests: ["Web apps, APIs, clean UI, learning in public."],                               // EDIT
-  goals:     ["Ship one real project every month.", "Learn backend and databases next."],     // EDIT
-  "ls projects": ["portfolio/", "webpro-w9/", "webpro-book-search/"]
+  whoami: ["Roziboy Ahmadaliyev, computer engineering student.", "Cybersecurity future · web developer in progress."],
+  education: ["Computer Engineering, 2 years completed.", "Study progress: about 70%.", "Goal: build a professional career in cybersecurity."],
+  languages: ["English (Advanced)", "Uzbek (Native)", "Korean (Intermediate)"],
+  interests: ["Cybersecurity", "Web development", "Football", "Video games", "Team communication"],
+  goals: ["Become a cybersecurity professional.", "Keep building real projects with clean code and strong logic."],
+  "ls projects": ["portfolio/", "webpro-w9/", "webpro-book-search/", "python_tasks/", "weather-forecast/"]
 };
 
-const TIMELINE = [   // EDIT: your milestones, newest first or oldest first, as you like
-  { when: "2026", title: "Started Web Programming", text: "First HTML pages, Git and GitHub Pages." },
-  { when: "2026", title: "Published my first site", text: "Pushed index.html and published it with GitHub Pages." },
-  { when: "2026", title: "Built Book Search", text: "A search app using the Open Library API, deployed to Pages." },
-  { when: "2026", title: "This portfolio", text: "A decorative, creative portfolio in its own repository." }
+const TIMELINE = [
+  { when: "2026", title: "Focused on security and web skills", text: "Continuing my university studies while building projects in Python, web design, and cybersecurity foundations." },
+  { when: "2026", title: "Learning by building", text: "I developed several small websites and coding projects to strengthen my HTML, CSS, JavaScript, and problem-solving skills." },
+  { when: "2025", title: "Computer engineering journey", text: "Started my second year and continued improving my technical knowledge and study discipline." },
+  { when: "2024", title: "Strong technical foundation", text: "Built my interest in programming, logic, software, and future career growth in technology." }
 ];
 
-const CLASSES = {    // EDIT: your real classes
-  sub: "This term I'm taking these classes. Progress bars are my own honest estimate.",
+const CLASSES = {
+  sub: "I am learning coding, web development, computer engineering fundamentals, and cybersecurity-related skills. My progress is strong and still growing.",
   list: [
-    { code: "WEBPRO", name: "Web Programming", term: "Fall 2026", what: "HTML, CSS, JavaScript, Git, GitHub Pages, APIs.", progress: 55 },
-    { code: "CLASS-2", name: "Your second class", term: "Fall 2026", what: "What you learn in it.", progress: 40 },
-    { code: "CLASS-3", name: "Your third class", term: "Fall 2026", what: "What you learn in it.", progress: 30 }
+    { code: "CENG", name: "Computer Engineering Fundamentals", term: "2024 – present", what: "Programming logic, systems thinking, and engineering problem solving.", progress: 70 },
+    { code: "WEB", name: "Web Programming", term: "2026", what: "HTML, CSS, JavaScript, GitHub, Git, and project deployment.", progress: 88 },
+    { code: "PY", name: "Python Programming", term: "2026", what: "Python logic, scripting, automation, and problem solving.", progress: 82 },
+    { code: "SEC", name: "Cybersecurity Foundations", term: "2026", what: "Security mindset, network awareness, digital safety, and future career preparation.", progress: 76 }
   ]
 };
 
-// Only list a skill if at least one project uses it. usedIn = project ids from PROJECTS below.
 const SKILLS = [
-  { name: "HTML",            cat: "Languages", note: "Semantic pages and forms. My starting point for everything.", usedIn: ["portfolio", "w9", "book-search"] },
-  { name: "CSS",             cat: "Languages", note: "Layout with grid and flexbox, themes with custom properties.", usedIn: ["portfolio", "book-search"] },
-  { name: "JavaScript",      cat: "Languages", note: "DOM, events and fetch. It makes the pages come alive.", usedIn: ["portfolio", "book-search"] },
-  { name: "Open Library API",cat: "Web & APIs", note: "Search books by title or author with one fetch call.", usedIn: ["book-search"] },
-  { name: "Git & GitHub",    cat: "Tools", note: "Small commits with clear messages, pushed often.", usedIn: ["portfolio", "w9", "book-search"] },
-  { name: "GitHub Pages",    cat: "Tools", note: "Free hosting for every project, deployed from the repo root.", usedIn: ["portfolio", "w9", "book-search"] }
-  // EDIT: add more, e.g. { name: "Python", cat: "Languages", note: "...", usedIn: ["your-project-id"] }
+  { name: "Python", cat: "Languages", note: "Strong logic, scripting, automation, and task solving using Python.", usedIn: ["portfolio", "python-tasks", "weather-forecast"] },
+  { name: "HTML", cat: "Languages", note: "Semantic structure and clean page layouts for real websites.", usedIn: ["portfolio", "w9", "book-search", "weather-forecast"] },
+  { name: "CSS", cat: "Languages", note: "Responsive design, visual styling, and creative modern layouts.", usedIn: ["portfolio", "book-search", "weather-forecast"] },
+  { name: "JavaScript", cat: "Languages", note: "DOM interaction, functionality, and interactive user experiences.", usedIn: ["portfolio", "book-search", "weather-forecast"] },
+  { name: "Java", cat: "Languages", note: "Object-oriented programming and structure-building practice.", usedIn: ["univer-project", "c-language"] },
+  { name: "PHP", cat: "Languages", note: "Backend logic and dynamic web application basics.", usedIn: ["univer-project"] },
+  { name: "SQL / Databases", cat: "Data", note: "Basic database management and data organization for web apps.", usedIn: ["univer-project"] },
+  { name: "Cybersecurity", cat: "Security", note: "My future professional direction and growing interest in secure systems.", usedIn: ["portfolio", "security-practice"] },
+  { name: "Git & GitHub", cat: "Tools", note: "Version control, publishing work publicly, and collaborating with clear project history.", usedIn: ["portfolio", "w9", "book-search", "python-tasks", "weather-forecast"] },
+  { name: "GitHub Pages", cat: "Tools", note: "Simple and reliable deployment for static web projects.", usedIn: ["portfolio", "w9", "book-search", "weather-forecast"] },
+  { name: "Communication", cat: "Soft Skills", note: "Working with others, explaining ideas clearly, and improving collaboration.", usedIn: ["portfolio", "univer-project"] },
+  { name: "Problem Solving", cat: "Soft Skills", note: "Breaking problems into steps and building practical solutions with logic and creativity.", usedIn: ["portfolio", "book-search", "weather-forecast"] }
 ];
 
-const PROJECTS = [   // EDIT: id must be unique; repo = the GitHub repository name
-  { id: "portfolio", title: "This portfolio", repo: "portfolio", tags: ["HTML", "CSS", "JavaScript", "Canvas"],
-    text: "A night-sky portfolio with an animated star field, theme switch, live GitHub commit counts and an in-page resume.", big: true },
-  { id: "book-search", title: "Book Search", repo: "webpro-book-search", tags: ["JavaScript", "Open Library API", "Pages"],
-    text: "Search millions of books by title or author using the Open Library API. Deployed to GitHub Pages." },
-  { id: "w9", title: "webpro-w9", repo: "webpro-w9", tags: ["HTML", "Git", "Pages"],
-    text: "My first published page: index.html with my name and the date, plus the 404 exercises." }
+const PROJECTS = [
+  { id: "portfolio", title: "This portfolio", repo: "portfolio", tags: ["HTML", "CSS", "JavaScript", "UI/UX"], text: "A modern personal portfolio with a black sky theme, animated background, project sections, contact links, and resume details.", big: true },
+  { id: "book-search", title: "Book Search", repo: "webpro-book-search", tags: ["JavaScript", "API", "GitHub Pages"], text: "A book search app using the Open Library API to search by title or author and present results clearly.", big: false },
+  { id: "w9", title: "webpro-w9", repo: "webpro-w9", tags: ["HTML", "Git", "Pages"], text: "A course-based assignment repository published to GitHub Pages with index.html and project work examples.", big: false },
+  { id: "python-tasks", title: "Python Tasks", repo: "python_tasks", tags: ["Python", "Automation", "Logic"], text: "Python practice and problem-solving tasks focused on logic, scripting, and clean code.", big: false },
+  { id: "weather-forecast", title: "Weather Forecast", repo: "weather-forecast", tags: ["JavaScript", "API", "UI"], text: "A weather app built with live data and a user-friendly interface for quick access to forecast information.", big: false },
+  { id: "univer-project", title: "University Project", repo: "Univer_project", tags: ["PHP", "Java", "Database"], text: "Academic project work showing my ability to build functional solutions and manage code for university tasks.", big: false },
+  { id: "c-language", title: "C Language Practice", repo: "C-language", tags: ["C", "Programming", "Algorithms"], text: "Programming practice in C with problem solving and algorithmic thinking.", big: false }
 ];
 
-const RESUME = {     // EDIT everything: shown in the Resume section and printable
-  headline: "Computer student · Web developer in training",
-  summary: "Motivated student who learns by building. Comfortable with HTML, CSS, JavaScript and Git, and publishing every project with GitHub Pages.",
+const RESUME = {
+  headline: "Computer Engineering Student · Cybersecurity Future · Web Developer in Training",
+  summary: "Computer engineering student with two years of study completed and about 70% of the program finished. Strong interest in cybersecurity, web development, and practical coding. Skilled in Python, HTML, CSS, JavaScript, Java, PHP, Git/GitHub, and project-based learning. Fluent in English and Uzbek, and able to communicate in Korean at an intermediate level.",
   education: [
-    { what: "Your Major, Your University", when: "2024 – present", more: "Relevant classes: Web Programming, ..." }
+    { what: "Computer Engineering", when: "2024 – present", more: "Currently studying computer engineering and building technical skills in programming, logic, and modern systems." },
+    { what: "Academic progress", when: "2 years completed / 70% finished", more: "Doing well in studies and continuing to improve through coursework, labs, and personal projects." }
   ],
   experience: [
-    { what: "Personal projects", when: "2026", more: "Portfolio, Book Search app, GitHub Pages deployments." }
+    { what: "Student and part-time worker", when: "Present", more: "Balancing university studies, practical work, and independent technical learning while developing discipline and communication skills." },
+    { what: "Personal web and coding projects", when: "2025 – 2026", more: "Built sites and coding projects using HTML, CSS, JavaScript, Python, and GitHub Pages to strengthen my portfolio and technical skills." }
   ],
-  certs: [
-    // { issuer: "Coursera", title: "Course title", when: "May 2026", url: "https://..." }
-  ]
+  certs: []
 };
 
-const HOMEWORK = [   // The three cards. desc may contain simple HTML like <code>.
-  { title: "Personal portfolio", repo: "portfolio",
-    desc: "The Git homework: a portfolio repository on GitHub Pages with my name, photo, bio, skills and project links, built up over many commits with clear messages." },
-  { title: "webpro-w9", repo: "webpro-w9",
-    desc: "The Monday homework: a repo with an <code>index.html</code> that has my name and the date, pushed to GitHub and published with Pages. It also holds the Friday 404 exercises." },
-  { title: "webpro-book-search", repo: "webpro-book-search",
-    desc: "The Friday homework: my Book Search app (Open Library API) deployed to GitHub Pages, with <code>index.html</code> in the repo root and no absolute paths or debug logging." }
-];
